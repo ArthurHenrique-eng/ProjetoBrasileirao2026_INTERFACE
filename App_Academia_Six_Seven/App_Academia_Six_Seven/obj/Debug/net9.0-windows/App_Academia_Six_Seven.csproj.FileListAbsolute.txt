@@ -1,0 +1,17 @@
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\bin\Debug\net9.0-windows\App_Academia_Six_Seven.exe
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\bin\Debug\net9.0-windows\App_Academia_Six_Seven.deps.json
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\bin\Debug\net9.0-windows\App_Academia_Six_Seven.runtimeconfig.json
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\bin\Debug\net9.0-windows\App_Academia_Six_Seven.dll
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\bin\Debug\net9.0-windows\App_Academia_Six_Seven.pdb
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.Form1.resources
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.csproj.GenerateResource.cache
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.AssemblyInfoInputs.cache
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.AssemblyInfo.cs
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.csproj.CoreCompileInputs.cache
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.sourcelink.json
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.dll
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\refint\App_Academia_Six_Seven.dll
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.pdb
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\App_Academia_Six_Seven.genruntimeconfig.cache
+C:\Users\1086921\Documents\GitHub\App_academia\App_Academia_Six_Seven\App_Academia_Six_Seven\obj\Debug\net9.0-windows\ref\App_Academia_Six_Seven.dll
