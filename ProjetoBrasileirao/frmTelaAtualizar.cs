@@ -15,9 +15,17 @@ using System.Windows.Forms;
 
 namespace ProjetoBrasileirao
 {
+
+
+
+
     public partial class frmTelaAtualizar : Form
     {
         private int idSelecionado;
+        private BindingSource bindingSource = new BindingSource();
+        private List<dynamic> todosOsTimes = new List<dynamic>();
+
+
         public frmTelaAtualizar()
         {
             InitializeComponent();
@@ -72,7 +80,9 @@ namespace ProjetoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSeriaDModel>>(jsonString);
 
-                        dgvAtualizar.DataSource = dados;
+                        todosOsTimes = dados.Cast<dynamic>().ToList();
+                        bindingSource.DataSource = todosOsTimes;
+                        dgvAtualizar.DataSource = bindingSource;
                     }
                     else
                     {
@@ -102,7 +112,9 @@ namespace ProjetoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSerieCModel>>(jsonString);
 
-                        dgvAtualizar.DataSource = dados;
+                        todosOsTimes = dados.Cast<dynamic>().ToList();
+                        bindingSource.DataSource = todosOsTimes;
+                        dgvAtualizar.DataSource = bindingSource;
                     }
                     else
                     {
@@ -132,7 +144,9 @@ namespace ProjetoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSerieBAModel>>(jsonString);
 
-                        dgvAtualizar.DataSource = dados;
+                        todosOsTimes = dados.Cast<dynamic>().ToList();
+                        bindingSource.DataSource = todosOsTimes;
+                        dgvAtualizar.DataSource = bindingSource;
                     }
                     else
                     {
@@ -162,7 +176,9 @@ namespace ProjetoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSeriaAModel>>(jsonString);
 
-                        dgvAtualizar.DataSource = dados;
+                        todosOsTimes = dados.Cast<dynamic>().ToList();
+                        bindingSource.DataSource = todosOsTimes;
+                        dgvAtualizar.DataSource = bindingSource;
                     }
                     else
                     {
@@ -393,10 +409,7 @@ namespace ProjetoBrasileirao
 
                     string json = JsonConvert.SerializeObject(clube);
 
-                    StringContent conteudo = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
+                    StringContent conteudo = new StringContent(json, Encoding.UTF8, "application/json");
 
                     HttpResponseMessage response =
                         await client.PutAsync(apiUrl, conteudo);
@@ -477,6 +490,41 @@ namespace ProjetoBrasileirao
             txt_golsTime.Text = linhaSelecionada.Cells["GolsproClube"].Value?.ToString() ?? "";
             txt_golsSofridos.Text = linhaSelecionada.Cells["GolscontraClube"].Value?.ToString() ?? "";
             txt_saldoTime.Text = linhaSelecionada.Cells["SaldoGolsClube"].Value?.ToString() ?? "";
+        }
+
+        private async void AplicarFiltros(object sender, EventArgs e)
+        {
+            if (todosOsTimes == null || !todosOsTimes.Any())
+                return;
+
+            string textoNome = txtFiltro_NomeTime.Text.ToLower();
+            string textoPosicao = txtFiltro_Posicao.Text.Trim();
+
+            var filtrados = todosOsTimes.Where(t =>
+            {
+                var propNome = ((object)t).GetType().GetProperty("NomeClube");
+                var propPosicao = ((object)t).GetType().GetProperty("PosicaoClube");
+
+                bool passaNome = true;
+                bool passaPosicao = true;
+
+                if (!string.IsNullOrWhiteSpace(textoNome) && propNome != null)
+                {
+                    string valorNome = propNome.GetValue(t)?.ToString() ?? "";
+                    passaNome = valorNome.ToLower().Contains(textoNome);
+                }
+
+                if (!string.IsNullOrWhiteSpace(textoPosicao) && propPosicao != null)
+                {
+                    string valorPosicao = propPosicao.GetValue(t)?.ToString() ?? "";
+                    passaPosicao = valorPosicao == textoPosicao;
+                }
+
+                return passaNome && passaPosicao;
+            }).ToList();
+
+            bindingSource.DataSource = filtrados;
+            dgvAtualizar.DataSource = bindingSource;
         }
     }
 }

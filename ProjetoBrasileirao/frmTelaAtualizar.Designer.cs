@@ -31,11 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTelaAtualizar));
             label1 = new Label();
             panel1 = new Panel();
+            lbl_Posicao = new Label();
+            lbl_NomeTime = new Label();
+            txtFiltro_Posicao = new TextBox();
+            txtFiltro_NomeTime = new TextBox();
             btn_consultar = new Button();
-            chkbox_posicao = new CheckBox();
             cBox_Atualizar = new ComboBox();
             txt_series = new Label();
-            chkbox_nometime = new CheckBox();
             dgvAtualizar = new DataGridView();
             btn_inserir = new Button();
             btn_atualizar = new Button();
@@ -79,24 +81,62 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(lbl_Posicao);
+            panel1.Controls.Add(lbl_NomeTime);
+            panel1.Controls.Add(txtFiltro_Posicao);
+            panel1.Controls.Add(txtFiltro_NomeTime);
             panel1.Controls.Add(btn_consultar);
-            panel1.Controls.Add(chkbox_posicao);
             panel1.Controls.Add(cBox_Atualizar);
             panel1.Controls.Add(txt_series);
-            panel1.Controls.Add(chkbox_nometime);
             panel1.Controls.Add(dgvAtualizar);
             panel1.Controls.Add(label1);
             panel1.ImeMode = ImeMode.Off;
             panel1.Location = new Point(-7, -5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(255, 549);
+            panel1.Size = new Size(267, 549);
             panel1.TabIndex = 8;
+            // 
+            // lbl_Posicao
+            // 
+            lbl_Posicao.AutoSize = true;
+            lbl_Posicao.Font = new Font("Segoe UI", 9.75F);
+            lbl_Posicao.Location = new Point(147, 427);
+            lbl_Posicao.Name = "lbl_Posicao";
+            lbl_Posicao.Size = new Size(85, 17);
+            lbl_Posicao.TabIndex = 47;
+            lbl_Posicao.Text = "Posição Time";
+            // 
+            // lbl_NomeTime
+            // 
+            lbl_NomeTime.AutoSize = true;
+            lbl_NomeTime.Font = new Font("Segoe UI", 9.75F);
+            lbl_NomeTime.Location = new Point(19, 427);
+            lbl_NomeTime.Name = "lbl_NomeTime";
+            lbl_NomeTime.Size = new Size(73, 17);
+            lbl_NomeTime.TabIndex = 46;
+            lbl_NomeTime.Text = "Nome time";
+            // 
+            // txtFiltro_Posicao
+            // 
+            txtFiltro_Posicao.Location = new Point(147, 445);
+            txtFiltro_Posicao.Name = "txtFiltro_Posicao";
+            txtFiltro_Posicao.Size = new Size(100, 23);
+            txtFiltro_Posicao.TabIndex = 45;
+            txtFiltro_Posicao.TextChanged += AplicarFiltros;
+            // 
+            // txtFiltro_NomeTime
+            // 
+            txtFiltro_NomeTime.Location = new Point(19, 445);
+            txtFiltro_NomeTime.Name = "txtFiltro_NomeTime";
+            txtFiltro_NomeTime.Size = new Size(100, 23);
+            txtFiltro_NomeTime.TabIndex = 44;
+            txtFiltro_NomeTime.TextChanged += AplicarFiltros;
             // 
             // btn_consultar
             // 
             btn_consultar.BackColor = Color.PaleTurquoise;
             btn_consultar.FlatStyle = FlatStyle.Flat;
-            btn_consultar.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_consultar.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             btn_consultar.Location = new Point(57, 499);
             btn_consultar.Name = "btn_consultar";
             btn_consultar.Size = new Size(135, 32);
@@ -104,16 +144,6 @@
             btn_consultar.Text = "Consultar tabela";
             btn_consultar.UseVisualStyleBackColor = false;
             btn_consultar.Click += btn_consultar_Click;
-            // 
-            // chkbox_posicao
-            // 
-            chkbox_posicao.AutoSize = true;
-            chkbox_posicao.Location = new Point(150, 447);
-            chkbox_posicao.Name = "chkbox_posicao";
-            chkbox_posicao.Size = new Size(94, 19);
-            chkbox_posicao.TabIndex = 6;
-            chkbox_posicao.Text = "Posição time";
-            chkbox_posicao.UseVisualStyleBackColor = true;
             // 
             // cBox_Atualizar
             // 
@@ -137,16 +167,6 @@
             txt_series.Size = new Size(44, 19);
             txt_series.TabIndex = 4;
             txt_series.Text = "Séries";
-            // 
-            // chkbox_nometime
-            // 
-            chkbox_nometime.AutoSize = true;
-            chkbox_nometime.Location = new Point(17, 447);
-            chkbox_nometime.Name = "chkbox_nometime";
-            chkbox_nometime.Size = new Size(86, 19);
-            chkbox_nometime.TabIndex = 5;
-            chkbox_nometime.Text = "Nome time";
-            chkbox_nometime.UseVisualStyleBackColor = true;
             // 
             // dgvAtualizar
             // 
@@ -187,7 +207,7 @@
             // 
             btn_apagar.BackColor = Color.Crimson;
             btn_apagar.FlatStyle = FlatStyle.Flat;
-            btn_apagar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btn_apagar.Font = new Font("Segoe UI Black", 9.75F, FontStyle.Bold);
             btn_apagar.Location = new Point(553, 430);
             btn_apagar.Name = "btn_apagar";
             btn_apagar.Size = new Size(96, 38);
@@ -449,8 +469,6 @@
         private Button btn_atualizar;
         private Button btn_inserir;
         private Label txt_series;
-        private CheckBox chkbox_nometime;
-        private CheckBox chkbox_posicao;
         private Label label5;
         private TextBox txt_derrotas;
         private Label label10;
@@ -472,5 +490,9 @@
         private Label label9;
         private TextBox txt_saldoTime;
         private Button btn_consultar;
+        private Label lbl_Posicao;
+        private Label lbl_NomeTime;
+        private TextBox txtFiltro_Posicao;
+        private TextBox txtFiltro_NomeTime;
     }
 }
